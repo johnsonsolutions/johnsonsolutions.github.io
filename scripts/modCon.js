@@ -45,7 +45,7 @@ function sample(){
     testO.cta = ("");
     //testO.navigation = "<div class='nameTag'><h1>Tevin Johnson</h1><br/><nav><ul class='navMnu'><li><a href='index.html'>Home</a></li><li><a>Next..</a></li></ul></nav></div>";
     testO.navigation = fetch("../kits/navigation/nav0.html");
-    testO.bgVid = "<div class='bgvCont'><video autoplay class='bgVid' loop><source src='IntroL1.mp4' type='video/mp4'></video></div>";
+    testO.bgVid = "<div class='bgvCont'><video autoplay class='bgVid' loop><source src='assets/video/IntroL1.mp4' type='video/mp4'></video></div>";
 
     return testO.print();
 }
