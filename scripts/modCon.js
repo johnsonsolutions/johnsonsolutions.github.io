@@ -83,4 +83,4 @@ class cUnit{
 
 injector.prep([sPrint]);
 
-console.log(fchA1("https://johnsonsolutions.github.io/kits/navigation/nav0.html"));
+console.log(fchA1("../kits/navigation/nav0.html"));
