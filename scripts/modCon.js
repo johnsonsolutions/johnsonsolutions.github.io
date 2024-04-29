@@ -1,4 +1,4 @@
-Object.prototype.yell = function(){ if(this!=null){ console.log(this); } return this; };
+Object.prototype.yell = function(){ if(this!=null){ console.log(this); } return ""; };
 
 $(document).ready(
     function(){
@@ -55,8 +55,8 @@ function sample(){
 
     testO.cta = ("");
     //testO.navigation = "<div class='nameTag'><h1>Tevin Johnson</h1><br/><nav><ul class='navMnu'><li><a href='index.html'>Home</a></li><li><a>Next..</a></li></ul></nav></div>";
-    testO.navigation = fchA1("https://johnsonsolutions.github.io/kits/navigation/nav0.html");
-    testO.navigation.yell();
+    //testO.navigation = fchA1("https://johnsonsolutions.github.io/kits/navigation/nav0.html");
+    //testO.navigation.yell();
     testO.bgVid = "<div class='bgvCont'><video autoplay class='bgVid' loop><source src='assets/video/IntroL1.mp4' type='video/mp4'></video></div>";
 
     return testO.print();
@@ -79,3 +79,5 @@ class cUnit{
 
 
 injector.prep([sPrint]);
+
+console.log(fchA1("https://johnsonsolutions.github.io/kits/navigation/nav0.html"));
