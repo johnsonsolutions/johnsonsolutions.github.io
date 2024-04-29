@@ -35,11 +35,12 @@ function fetch(path){
 }
 
 function fchA1(targ){
+    let hold;
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
-        return this.responseText;
+        hold = this.responseText;
     }
-    xhttp.open("GET", "targ", true);
+    xhttp.open("GET", targ, true);
     xhttp.send();
 }
 
