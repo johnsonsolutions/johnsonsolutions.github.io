@@ -39,6 +39,7 @@ function fchA1(targ){
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
         hold = this.responseText;
+        yell(this.responseText);
     }
     xhttp.open("GET", targ, true);
     xhttp.send();
