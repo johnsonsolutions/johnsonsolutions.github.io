@@ -42,6 +42,7 @@ function fchA1(targ){
     }
     xhttp.open("GET", targ, true);
     xhttp.send();
+    return hold;
 }
 
 function sPrint(){
