@@ -11,7 +11,8 @@ let runway = {
 
 $(document).ready(function(){
     runway.add(fitting)
-    //runway.add();
+    runway.add(testKit);
+    runway.add(force);
     runway.run();
 });
 
@@ -45,6 +46,15 @@ let template = () =>{
 
     return ret;
 };
+
+
+
+function testKit(){
+    d3.select("body")
+    .append("p")
+    .attr('id', "demo");
+
+}
 
 function force(){
 
