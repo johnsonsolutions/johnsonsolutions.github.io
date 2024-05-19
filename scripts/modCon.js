@@ -1,86 +1,59 @@
-Object.prototype.yell = function(){ if(this!=null){ console.log(this); } return ""; };
+let yell = function(inp){ console.log(inp); return inp; };
+let say = function(inp, targ){ $(targ).html(inp); };
 
-$(document).ready(
-    function(){
-        injector.inject();
+let runway = {
+    "func": [],
+    "run": ()=>{ runway.func.forEach((f) => {
+        f();
+    });},
+    "add": (i)=>{ runway.func[runway.func.length] = i; }
+}
+
+$(document).ready(function(){
+    runway.add(fitting)
+    //runway.add();
+    runway.run();
+});
+
+function isPortrait(){
+    let size = {"x":screen.width, "y":screen.height };
+    return size.x > size.y ? false : true;
+}
+
+function fitting(){
+    if(isPortrait()){
+        d3.select("#noForm")
+        .style('width', "67%");
     }
-);
-
-let injector = {
-    "prep": 
-        function(args){
-            this.injection.push(...args);
-        },
-    "injection": [],
-    "inject": 
-        function(){
-            for(let i = 0; i < this.injection.length; i++){
-                this.injection[i]();
-            }
-        }
 }
 
-function fetch(path){
-    $.ajax({
-        url: path,
-        type: 'GET',
-        dataType:'html',
-        success: function(response){
-            return response;
-        },
-        error:function(xhr, status, error){
-            console.error('badRead: ', error);
-        }
-    });
-}
-
-function fchA1(targ){
-    let hold;
-    const xhttp = new XMLHttpRequest();
-    xhttp.onload = function() {
-        hold = this.responseText;
-        yell(this.responseText);
-    }
-    xhttp.open("GET", targ, true);
-    xhttp.send();
-    return hold;
-}
-
-function sPrint(){
-    $("body").html(sample());
-}
-
-
-
-
-function sample(){
-    let testO = new cUnit();
-
-    testO.cta = ("");
-    //testO.navigation = "<div class='nameTag'><h1>Tevin Johnson</h1><br/><nav><ul class='navMnu'><li><a href='index.html'>Home</a></li><li><a>Next..</a></li></ul></nav></div>";
-    //testO.navigation = fchA1("https://johnsonsolutions.github.io/kits/navigation/nav0.html");
-    //testO.navigation.yell();
-    testO.bgVid = "<div class='bgvCont'><video autoplay class='bgVid' loop><source src='assets/video/IntroL1.mp4' type='video/mp4'></video></div>";
-
-    return testO.print();
-}
 
 class cUnit{
-    constructor(){}
-    print(){ 
-        let op = "";
-        op += this.navigation != null ? this.navigation : "";
-        op += this.search != null ? this.search : "";
-        op += this.bgVid != null ? this.bgVid : "";
-        op += this.slider != null ? this.slider : "";
-        op += this.cta != null ? this.cta : "";
-        op += this.socials != null ? this.socials : "";
-        op += this.footer != null ? this.footer : "";
-        return op;
-    }
+    constructor(
+        navigation="",
+        search="",
+        bgVid="",
+        slider="",
+        cta="",
+        socials="",
+        footer=""
+    ){ }
 }
 
+let template = () =>{
+    let ret = new cUnit();
 
-injector.prep([sPrint]);
+    return ret;
+};
 
-console.log(fchA1("../kits/navigation/nav0.html"));
+function force(){
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("demo").innerHTML = this.responseText;
+      }
+    };
+    xhttp.open("GET", "kits/navigation/nav0.html", true);
+    xhttp.send();
+}
