@@ -8,6 +8,7 @@ body{
     background-color: black;
     color: lightgray;
     font-family: "Segoe UI Light", Arial, Helvetica, sans-serif;
+    margin: 1em;
 }
 
 h3{
@@ -33,16 +34,34 @@ h3{
 .navMnu *
 {
     text-decoration: none;
+    text-transform: uppercase;
     list-style: none;
 }
 .navMnu li:hover{
     color: white;
+    cursor: pointer;
 }
 .navMnu li:hover{
     transition: color 0.5s;
-    color: rgb(0, 162, 255);
+    color: yellow;
 
 }
+.card-header a{
+    float: right;
+}
+.flexline{
+    display: flex;
+    justify-content: flex-end;
+}
+.flexline hr{
+    width: 80%;
+    margin: 0;
+}
+.card{
+    border: 0;
+}
+.card-header{ background-color: transparent !important; }
+.offcanvas-body{ padding: 0; }
 .bgvCont{
     width: 100%;
     height: 21em;
@@ -53,4 +72,7 @@ h3{
     width: 100%;
     z-index: -700;
     position: relative;
+}
+.bg-primary{
+    color: white;
 }
