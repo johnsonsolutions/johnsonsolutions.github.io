@@ -1,0 +1,20 @@
+{
+    "projects": [
+        {
+            "title": "Portfolio 1",
+            "skills": ["HTML", "CSS", "Javascript", "Bootstrap", "FontAwesome", "Responsive Design"],
+            "mobileSrc": "assets/images/Screen Shot 2025-03-02 at 22.03.30.png",
+            "deskSrc": "assets/images/Screen Shot 2025-03-02 at 22.02.47.png",
+            "description": "I built a portfolio website using HTML, CSS, and JavaScript, with integration of Bootstrap and FontAwesome for responsive design and icons. The page includes a header, a navigation bar, and two main content sections featuring articles and social media links. The layout adapts to different screen sizes, ensuring a smooth user experience across devices. Custom styles are implemented through external CSS files, and JavaScript is ready for future enhancements.",
+            "link": "https://github.com/johnsonsolutions/Portfolio-1"
+        },
+        {
+            "title": "Portfolio 2",
+            "skills": ["HTML", "CSS", "Javascript", "Bootstrap", "FontAwesome", "Responsive Design"],
+            "mobileSrc": "assets/images/Screen Shot 2025-03-10 at 21.11.55-fullpage.png",
+            "deskSrc": "assets/images/Screen Shot 2025-03-10 at 18.41.10.png",
+            "description": "I built a portfolio website using HTML, CSS, and JavaScript, with integration of Bootstrap and FontAwesome for responsive design and icons. The page includes a header, a navigation bar, and two main content sections featuring articles and social media links. The layout adapts to different screen sizes, ensuring a smooth user experience across devices. Custom styles are implemented through external CSS files, and JavaScript is ready for future enhancements.",
+            "link": "https://github.com/johnsonsolutions/Portfolio-2"
+        }
+    ]
+}

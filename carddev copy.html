@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expandable Card</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <style>
+    body {
+      background-color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 2em;
+      font-family: Arial, sans-serif;
+    }
+
+    .projCard {
+      cursor: pointer;
+      color: white;
+      padding: 0 !important;
+      filter: grayscale(1);
+      background-image: url("/api/placeholder/400/600");
+      background-size: cover;
+      background-repeat: no-repeat;
+      margin: 1em;
+      width: 15em;
+      height: 21em;
+      overflow: hidden;
+      position: relative;
+      transition: filter 0.3s ease-in-out;
+    }
+
+    .projCard:hover {
+      filter: grayscale(0);
+    }
+
+    /* Portrait mode - title only at top right */
+    .projTitle {
+      padding: 1em;
+      text-align: right;
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      background: linear-gradient(rgba(0,0,0,0.8), transparent);
+    }
+
+    /* Landscape mode container */
+    .expanded-content {
+      display: none;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Left side of expanded card */
+    .left-panel {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 75%;
+      height: 100%;
+    }
+
+    /* Skills at bottom of left panel */
+    .projSkills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: 1em;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 1em;
+      background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    }
+
+    .projSkills span {
+      padding: 0.3em 0.6em;
+      background-color: rgba(255,255,255,0.2);
+      border-radius: 0.3em;
+    }
+
+    /* Right side panel - dark gray with description */
+    .right-panel {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 10.5em; /* 25% of 42em */
+      height: 100%;
+      background-color: #333;
+      padding: 1em;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .proj-description {
+      flex-grow: 1;
+      overflow-y: auto;
+      margin-bottom: 1em;
+    }
+
+    .proj-link {
+      text-align: right;
+      margin-top: auto;
+    }
+
+    .proj-link a {
+      color: #4fc3f7;
+      text-decoration: none;
+    }
+
+    .proj-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="projCard">
+    <!-- Title (visible in portrait mode) -->
+    <div class="projTitle">
+      <h3>Project Title</h3>
+    </div>
+
+    <!-- Content visible only in expanded/landscape mode -->
+    <div class="expanded-content">
+      <!-- Left panel with skills at bottom -->
+      <div class="left-panel">
+        <div class="projSkills">
+          <span>HTML</span>
+          <span>CSS</span>
+          <span>JavaScript</span>
+          <span>jQuery</span>
+          <span>Responsive</span>
+        </div>
+      </div>
+
+      <!-- Right panel with description and link -->
+      <div class="right-panel">
+        <div class="proj-description">
+          <p>This project demonstrates an expandable card interface that transitions between portrait and landscape modes. The card shows just a title in portrait mode and expands to reveal more details when clicked.</p>
+          <p>The expanded view includes a skills section at the bottom of the main panel and a dedicated information panel on the right side.</p>
+        </div>
+        <div class="proj-link">
+          <a href="https://example.com" target="_blank">View Project</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function() {
+      $(".projCard").on("click", function() {
+        var $this = $(this);
+        
+        if ($this.width() === 15 * parseFloat(getComputedStyle(document.documentElement).fontSize)) {
+          // Expand to landscape mode
+          $this.animate({ width: "42em" }, 300, function() {
+            $this.find(".expanded-content").fadeIn(200);
+          });
+        } else {
+          // Return to portrait mode
+          $this.find(".expanded-content").fadeOut(200, function() {
+            $this.animate({ width: "15em" }, 300);
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
