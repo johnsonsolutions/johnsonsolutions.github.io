@@ -1,1 +1,0 @@
-$("#test").focus(function(){$(this).load("index.html");});
