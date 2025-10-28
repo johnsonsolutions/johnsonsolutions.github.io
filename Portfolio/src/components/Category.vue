@@ -20,7 +20,7 @@ const allCards = ref([]);
 // Load project data
 onMounted(async () => {
     try {
-        const response = await fetch('/src/data/projData.json');
+        const response = await fetch('/projData.json');
         const data = await response.json();
         allCards.value = data.projects;
     } catch (error) {

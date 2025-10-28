@@ -80,7 +80,7 @@ export default {
   },
   async mounted() {
     try {
-      const response = await fetch('/src/data/projData.json');
+      const response = await fetch('/projData.json');
       const data = await response.json();
       this.cards = data.projects;
     } catch (error) {
