@@ -1,21 +1,90 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 
-const cats = ["Tone", "Twoo", "Tthee"];
+const props = defineProps({
+    searchText: {
+        type: String,
+        default: ''
+    },
+    selectedDomain: {
+        type: String,
+        default: null
+    }
+});
+
+const emit = defineEmits(['domainSelect']);
+
 const isExpanded = ref(false);
+const allCards = ref([]);
+
+// Load project data
+onMounted(async () => {
+    try {
+        const response = await fetch('/src/data/projData.json');
+        const data = await response.json();
+        allCards.value = data.projects;
+    } catch (error) {
+        console.error('Error loading project data:', error);
+    }
+});
+
+// Compute visible domains based on search (but not selectedDomain)
+const visibleDomains = computed(() => {
+    let filtered = allCards.value;
+
+    // Filter by search text only (check both keywords and skills)
+    if (props.searchText && props.searchText.trim() !== '') {
+        const searchLower = props.searchText.toLowerCase();
+        filtered = filtered.filter(card => {
+            const matchesKeyword = card.Keywords.some(keyword =>
+                keyword.toLowerCase().includes(searchLower)
+            );
+            const matchesSkill = card.skills && card.skills.some(skill =>
+                skill.toLowerCase().includes(searchLower)
+            );
+            return matchesKeyword || matchesSkill;
+        });
+    }
+
+    // Extract unique domains from filtered cards
+    const domains = new Set();
+    filtered.forEach(card => {
+        card.Keywords.forEach(keyword => {
+            domains.add(keyword);
+        });
+    });
+
+    // Always include "All" as the first item
+    return ['All', ...Array.from(domains)];
+});
 
 function toggleMenu() {
     isExpanded.value = !isExpanded.value;
+}
+
+function selectDomain(domain) {
+    if (domain === 'All') {
+        emit('domainSelect', null);
+    } else {
+        emit('domainSelect', domain);
+    }
 }
 </script>
 
 <template>
     <div class="category-menu">
         <button @click="toggleMenu" class="menu-toggle">
-            <h2><span class="arrow" :class="{ expanded: isExpanded }">◂</span>Domains</h2>
+            <h2><span class="arrow" :class="{ expanded: isExpanded }">◂</span>Project Domains</h2>
         </button>
         <ul v-show="isExpanded">
-            <li v-for="cat in cats" :key="cat">{{ cat }}</li>
+            <li
+                v-for="cat in visibleDomains"
+                :key="cat"
+                :class="{ active: cat === 'All' ? selectedDomain === null : selectedDomain === cat }"
+                @click="selectDomain(cat)"
+            >
+                {{ cat }}
+            </li>
         </ul>
     </div>
 </template>
@@ -65,9 +134,10 @@ function toggleMenu() {
         margin: -2px 0 0 0;
         font-size: 1rem;
         text-align: right;
-        /* background-color: var(--color-primary-transparent); */
+        background-color: rgba(0, 0, 0, 0.6);
         border: var(--border-style-light);
         border-radius: 5px;
+        box-shadow: var(--glow-effect);
     }
 
     ul li {
@@ -80,6 +150,12 @@ function toggleMenu() {
     ul li:hover {
         color: var(--color-accent);
         text-shadow: var(--text-glow);
+    }
+
+    ul li.active {
+        color: var(--color-accent);
+        text-shadow: var(--text-glow-strong);
+        font-weight: bold;
     }
 
     .cTag {

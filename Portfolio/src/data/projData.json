@@ -1,0 +1,31 @@
+{
+    "projects": [
+        {
+            "title": "Portfolio 1",
+            "Keywords": ["Front-End", "Web"],
+            "skills": ["HTML", "CSS", "Javascript", "Bootstrap", "FontAwesome", "Responsive Design"],
+            "mobileSrc": "@/assets/images/portfolio1card-01.png",
+            "deskSrc": "@/assets/images/portfolio1card2-01.png",
+            "description": "I built a portfolio website using HTML, CSS, and JavaScript, with integration of Bootstrap and FontAwesome for responsive design and icons. The page includes a header, a navigation bar, and two main content sections featuring articles and social media links. The layout adapts to different screen sizes, ensuring a smooth user experience across devices. Custom styles are implemented through external CSS files, and JavaScript is ready for future enhancements.",
+            "link": "https://github.com/johnsonsolutions/Portfolio-1"
+        },
+        {
+            "title": "Portfolio 2",
+            "Keywords": ["Front-End", "Web"],
+            "skills": ["HTML", "CSS", "Javascript", "Bootstrap", "FontAwesome", "Responsive Design"],
+            "mobileSrc": "@/assets/images/portfolio2card-01.png",
+            "deskSrc": "@/assets/images/portfolio2card2-01.png",
+            "description": "I built a portfolio website using HTML, CSS, and JavaScript, with integration of Bootstrap and FontAwesome for responsive design and icons. The page includes a header, a navigation bar, and two main content sections featuring articles and social media links. The layout adapts to different screen sizes, ensuring a smooth user experience across devices. Custom styles are implemented through external CSS files, and JavaScript is ready for future enhancements.",
+            "link": "https://github.com/johnsonsolutions/Portfolio-2"
+        },
+        {
+            "title": "PeaShooter",
+            "Keywords": ["Game Development", "Unity", "Android"],
+            "skills": ["Unity", "Adobe Creative Suite", "UI/UX", "Android SDK", "C#", "Mobile Optimization"],
+            "mobileSrc": "@/assets/images/pscard-01.png",
+            "deskSrc": "@/assets/images/pscard2-01.png",
+            "description": "I've revamped one of my first game development projects, creating a top-down, strategic, survival shooter that tests the players ability to prioritize in fast-paced gameplay. It's joystick-enabled for added convienience, and currently available on the Google Play Store",
+            "link": "https://play.google.com/store/apps/details?id=com.JohnsonSolutions.Playground"
+        }
+    ]
+}
